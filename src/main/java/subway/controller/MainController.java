@@ -23,6 +23,7 @@ public class MainController {
 
     public void run() {
         initSetting();
+
         while(true) {
             String command = getCommand();
             runByCommand(command);

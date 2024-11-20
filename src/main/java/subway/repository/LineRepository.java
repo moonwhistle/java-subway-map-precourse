@@ -7,6 +7,7 @@ import java.util.Objects;
 import subway.domain.vo.Line;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
     public static List<Line> lines() {

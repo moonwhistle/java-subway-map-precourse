@@ -54,4 +54,10 @@ public class OutputView {
                 LINE_SEPARATOR + INFO + "지하철 노선이 등록되었습니다."
         );
     }
+
+    public void successLineDelete() {
+        System.out.println(
+                LINE_SEPARATOR + INFO + "지하철 노선이 삭제되었습니다."
+        );
+    }
 }

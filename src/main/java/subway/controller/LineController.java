@@ -28,6 +28,9 @@ public class LineController {
         if(command.equals("1")) {
             registerLine();
         }
+        if(command.equals("2")) {
+            deleteLine();
+        }
     }
 
     private String getCommand() {
@@ -48,5 +51,18 @@ public class LineController {
                 new Station(inputView.registerLineDownStation())
         );
         LineStationRepository.addLineStation(new LineStation(line, stations));
+    }
+
+    private void deleteLine() {
+        String lineName = inputView.deleteLine();
+        removeLine(lineName);
+        outputView.successLineDelete();
+    }
+
+    private void removeLine(String lineName) {
+        if(!LineRepository.deleteLineByName(lineName)){
+            throw new IllegalArgumentException("등록된 노선이 없습니다.");
+        }
+        LineStationRepository.deleteLineStation(lineName);
     }
 }

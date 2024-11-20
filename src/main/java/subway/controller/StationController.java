@@ -31,9 +31,6 @@ public class StationController {
         if(command.equals("3")) {
             infoStations();
         }
-        if(!command.equals("B")) {
-            throw new IllegalArgumentException("돌아가기 위해서는 올바른 커맨드를 입력해주세요.");
-        }
     }
 
     private String getCommand() {
@@ -49,6 +46,7 @@ public class StationController {
     private void deleteStation() {
         String stationName = inputView.deleteStation();
         LineStationRepository.checkAlreadyResisterStation(stationName);
+
         if(!StationRepository.deleteStation(stationName)){
             throw new IllegalArgumentException("존재하지 않는 역 입니다.");
         }
