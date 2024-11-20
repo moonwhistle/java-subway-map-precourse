@@ -1,7 +1,6 @@
 package subway.controller;
 
-import subway.domain.LineStation;
-import subway.domain.LineStations;
+import subway.repository.LineStationRepository;
 import subway.domain.vo.Station;
 import subway.repository.StationRepository;
 import subway.view.InputView;
@@ -18,7 +17,20 @@ public class StationController {
     }
 
     public void run() {
+        String command = getCommand();
+        runByCommand(command);
+    }
 
+    public void runByCommand(String command) {
+        if(command.equals("1")) {
+            registerStation();
+        }
+        if(command.equals("2")) {
+            deleteStation();
+        }
+        if(command.equals("3")) {
+            infoStations();
+        }
     }
 
     public String getCommand() {
@@ -31,9 +43,15 @@ public class StationController {
         StationRepository.addStation(station);
     }
 
-    public void deleteStation(LineStations lineStations) {
+    public void deleteStation() {
         String stationName = inputView.deleteStation();
-        lineStations.checkAlreadyResisterStation(stationName);
-        StationRepository.deleteStation(stationName);
+        LineStationRepository.checkAlreadyResisterStation(stationName);
+        if(!StationRepository.deleteStation(stationName)){
+            throw new IllegalArgumentException("존재하지 않는 역 입니다.");
+        }
+    }
+
+    public void infoStations() {
+        outputView.infoStations(StationRepository.stations());
     }
 }

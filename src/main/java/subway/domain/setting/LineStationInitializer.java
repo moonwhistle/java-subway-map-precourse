@@ -4,15 +4,14 @@ import java.util.List;
 import subway.domain.LineStation;
 import subway.domain.vo.Line;
 import subway.domain.vo.Station;
+import subway.repository.LineStationRepository;
 
 public class LineStationInitializer {
 
-    public static List<LineStation> initLineStations() {
-        return List.of(
-                setTwoLineStations(),
-                setThreeLineStations(),
-                setSinBunDangStations()
-        );
+    public static void initLineStations() {
+        LineStationRepository.addLineStation(setTwoLineStations());
+        LineStationRepository.addLineStation(setThreeLineStations());
+        LineStationRepository.addLineStation(setSinBunDangStations());
     }
 
     private static LineStation setSinBunDangStations() {

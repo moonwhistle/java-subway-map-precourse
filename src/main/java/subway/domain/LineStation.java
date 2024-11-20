@@ -1,6 +1,5 @@
 package subway.domain;
 
-import java.util.Collections;
 import java.util.List;
 import subway.domain.vo.Line;
 import subway.domain.vo.Station;
@@ -16,7 +15,7 @@ public class LineStation {
     }
 
     public void checkAlreadyRegisteredStation(Station station) {
-        if(!stations.contains(station)) {
+        if(stations.contains(station)) {
             throw new IllegalArgumentException("이미 노선에 등록되어 있는 역입니다.");
         }
     }

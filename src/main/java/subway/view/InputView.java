@@ -16,12 +16,12 @@ public class InputView {
     }
 
     public String registerStation() {
-        System.out.println("## 등록할 역 이름을 입력하세요.");
+        System.out.println("\n## 등록할 역 이름을 입력하세요.");
         return scanner.nextLine();
     }
 
     public String deleteStation() {
-        System.out.println("## 삭제할 역 이름을 입력하세요.");
+        System.out.println("\n## 삭제할 역 이름을 입력하세요.");
         return scanner.nextLine();
     }
 }
