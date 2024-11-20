@@ -1,9 +1,9 @@
-package subway.domain;
+package subway.domain.vo;
 
-public class Line {
-    private String name;
+public class Station {
+    private final String name;
 
-    public Line(String name) {
+    public Station(String name) {
         this.name = name;
     }
 
