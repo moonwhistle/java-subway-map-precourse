@@ -11,11 +11,13 @@ public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
     private final StationController stationController;
+    private final LineController lineController;
 
     public MainController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.stationController = new StationController(inputView, outputView);
+        this.lineController = new LineController(inputView, outputView);
     }
 
 
@@ -30,6 +32,9 @@ public class MainController {
     private void runByCommand(String command) {
         if(command.equals("1")) {
             stationController.run();
+        }
+        if(command.equals("2")) {
+            lineController.run();
         }
     }
 

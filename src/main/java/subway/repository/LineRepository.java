@@ -14,10 +14,17 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        validateDuplicateLine(line);
         lines.add(line);
     }
 
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    private static void validateDuplicateLine(Line line) {
+        if (lines().contains(line)) {
+            throw new IllegalArgumentException("노선 중복");
+        }
     }
 }

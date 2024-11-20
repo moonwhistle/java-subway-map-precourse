@@ -21,7 +21,7 @@ public class StationController {
         runByCommand(command);
     }
 
-    public void runByCommand(String command) {
+    private void runByCommand(String command) {
         if(command.equals("1")) {
             registerStation();
         }
@@ -31,19 +31,22 @@ public class StationController {
         if(command.equals("3")) {
             infoStations();
         }
+        if(!command.equals("B")) {
+            throw new IllegalArgumentException("돌아가기 위해서는 올바른 커맨드를 입력해주세요.");
+        }
     }
 
-    public String getCommand() {
+    private String getCommand() {
         outputView.stationGuide();
         return inputView.getCommand();
     }
 
-    public void registerStation() {
+    private void registerStation() {
         Station station = new Station(inputView.registerStation());
         StationRepository.addStation(station);
     }
 
-    public void deleteStation() {
+    private void deleteStation() {
         String stationName = inputView.deleteStation();
         LineStationRepository.checkAlreadyResisterStation(stationName);
         if(!StationRepository.deleteStation(stationName)){
@@ -51,7 +54,7 @@ public class StationController {
         }
     }
 
-    public void infoStations() {
+    private void infoStations() {
         outputView.infoStations(StationRepository.stations());
     }
 }

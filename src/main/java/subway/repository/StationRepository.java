@@ -14,7 +14,7 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
-        validateStation(station);
+        validateDuplicateStation(station);
         stations.add(station);
     }
 
@@ -22,7 +22,7 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    private static void validateStation(Station station) {
+    private static void validateDuplicateStation(Station station) {
         if (stations.contains(station)) {
             throw new IllegalArgumentException("역 이름 중복");
         }

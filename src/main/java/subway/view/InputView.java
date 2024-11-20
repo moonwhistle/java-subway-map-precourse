@@ -24,4 +24,19 @@ public class InputView {
         System.out.println("\n## 삭제할 역 이름을 입력하세요.");
         return scanner.nextLine();
     }
+
+    public String registerLine() {
+        System.out.println("\n## 등록할 노선 이름을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public String registerLineUpStation() {
+        System.out.println("\n## 등록할 노선의 상행 종점역 이름을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public String registerLineDownStation() {
+        System.out.println("\n## 등록할 노선의 하행 종점역 이름을 입력하세요.");
+        return scanner.nextLine();
+    }
 }
