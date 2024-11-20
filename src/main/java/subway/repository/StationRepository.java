@@ -14,10 +14,17 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        validateStation(station);
         stations.add(station);
     }
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    private static void validateStation(Station station) {
+        if (stations.contains(station)) {
+            throw new IllegalArgumentException("역 이름 중복");
+        }
     }
 }

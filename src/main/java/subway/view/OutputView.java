@@ -14,4 +14,14 @@ public class OutputView {
                 + "Q. 종료" + LINE_SEPARATOR
         );
     }
+
+    public void stationGuide() {
+        System.out.println(
+                "## 역 관리 화면" + LINE_SEPARATOR
+                + "1. 역 등록" + LINE_SEPARATOR
+                + "2. 역 삭제" + LINE_SEPARATOR
+                + "3. 역 조회" + LINE_SEPARATOR
+                + "B.돌아가기" + LINE_SEPARATOR
+        );
+    }
 }
