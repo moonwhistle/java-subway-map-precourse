@@ -29,7 +29,7 @@ public class StationController {
             deleteStation();
         }
         if(command.equals("3")) {
-            infoStations();
+            showStations();
         }
     }
 
@@ -52,7 +52,7 @@ public class StationController {
         }
     }
 
-    private void infoStations() {
-        outputView.infoStations(StationRepository.stations());
+    private void showStations() {
+        outputView.showStations(StationRepository.stations());
     }
 }

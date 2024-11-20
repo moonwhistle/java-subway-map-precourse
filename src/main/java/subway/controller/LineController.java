@@ -31,6 +31,9 @@ public class LineController {
         if(command.equals("2")) {
             deleteLine();
         }
+        if(command.equals("3")) {
+            showLine();
+        }
     }
 
     private String getCommand() {
@@ -64,5 +67,9 @@ public class LineController {
             throw new IllegalArgumentException("등록된 노선이 없습니다.");
         }
         LineStationRepository.deleteLineStation(lineName);
+    }
+
+    private void showLine() {
+        outputView.showLines(LineRepository.lines());
     }
 }
