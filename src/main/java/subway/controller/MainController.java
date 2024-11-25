@@ -8,18 +8,18 @@ import subway.view.OutputView;
 
 public class MainController {
 
-    private final InputView inputView;
     private final OutputView outputView;
     private final InputController inputController;
     private final StationController stationController;
     private final LineController lineController;
+    private final SectionController sectionController;
 
     public MainController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
         this.outputView = outputView;
         this.inputController = new InputController(inputView, outputView);
         this.stationController = new StationController(inputView, outputView);
         this.lineController = new LineController(inputView, outputView);
+        this.sectionController = new SectionController(inputView, outputView);
     }
 
     public void run() {
@@ -38,6 +38,10 @@ public class MainController {
         }
         if(command.equals("2")) {
             lineController.run();
+            return true;
+        }
+        if(command.equals("3")) {
+            sectionController.run();
             return true;
         }
         return false;

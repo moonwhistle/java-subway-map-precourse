@@ -99,4 +99,29 @@ public class OutputView {
             System.out.println(line.getName());
         }
     }
+
+    public void guideSectionSystem() {
+        System.out.println(
+                LINE_SEPARATOR + "## 구간 관리 화면" + LINE_SEPARATOR
+                        + "1. 구간 등록" + LINE_SEPARATOR
+                        + "2. 구간 삭제" + LINE_SEPARATOR
+                        + "B. 돌아가기" + LINE_SEPARATOR
+        );
+    }
+
+    public void registerSectionLine() {
+        System.out.println("## 노선을 입력하세요.");
+    }
+
+    public void registerSectionStation() {
+        System.out.println("## 역이름을 입력하세요.");
+    }
+
+    public void registerSectionOrder() {
+        System.out.println("## 순서를 입력하세요.");
+    }
+
+    public void successRegisterSection() {
+        System.out.println("구간이 등록되었습니다.");
+    }
 }

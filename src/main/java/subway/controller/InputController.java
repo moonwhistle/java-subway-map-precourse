@@ -1,5 +1,6 @@
 package subway.controller;
 
+import java.util.List;
 import subway.domain.command.Command;
 import subway.domain.vo.Line;
 import subway.domain.vo.Station;
@@ -44,6 +45,15 @@ public class InputController {
                 return new Line(inputView.getLineName());
             } catch (IllegalArgumentException e) {
                 outputView.printError(e.getMessage());
+            }
+        }
+    }
+
+    public int getOrder(List<Station> stations) {
+        while(true) {
+            int order = inputView.getOrder();
+            if(order < stations.size()) {
+                return order;
             }
         }
     }

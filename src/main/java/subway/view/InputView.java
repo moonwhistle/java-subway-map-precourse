@@ -21,4 +21,8 @@ public class InputView {
     public String getLineName() {
         return scanner.nextLine();
     }
+
+    public int getOrder() {
+        return Integer.parseInt(scanner.nextLine());
+    }
 }

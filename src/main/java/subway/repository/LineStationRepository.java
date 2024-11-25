@@ -26,4 +26,13 @@ public class LineStationRepository {
     public static void deleteLineStation(Line line) {
         lineStations.removeIf(lineStation -> lineStation.getLine() == line);
     }
+
+    public static LineStation getLineStation(Line line) {
+        for (LineStation lineStation : lineStations) {
+            if (lineStation.getLine().equals(line)) {
+                return lineStation;
+            }
+        }
+        return null;
+    }
 }
