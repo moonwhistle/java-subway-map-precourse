@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.domain.command.Command;
+import subway.domain.vo.Line;
 import subway.domain.vo.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -31,6 +32,16 @@ public class InputController {
         while(true) {
             try {
                 return new Station(inputView.getStationName());
+            } catch (IllegalArgumentException e) {
+                outputView.printError(e.getMessage());
+            }
+        }
+    }
+
+    public Line getLine() {
+        while(true) {
+            try {
+                return new Line(inputView.getLineName());
             } catch (IllegalArgumentException e) {
                 outputView.printError(e.getMessage());
             }

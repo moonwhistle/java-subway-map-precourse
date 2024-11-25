@@ -17,4 +17,8 @@ public class InputView {
     public String getStationName() {
         return scanner.nextLine();
     }
+
+    public String getLineName() {
+        return scanner.nextLine();
+    }
 }

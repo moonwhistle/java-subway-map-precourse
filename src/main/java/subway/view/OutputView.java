@@ -1,5 +1,8 @@
 package subway.view;
 
+import java.util.List;
+import subway.domain.vo.Station;
+
 public class OutputView {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -47,5 +50,37 @@ public class OutputView {
 
     public void successDeleteStation() {
         System.out.println(LINE_SEPARATOR + "지하철 역이 삭제되었습니다.");
+    }
+
+    public void showStations(List<Station> stations) {
+        for(Station station : stations) {
+            System.out.println(station.getName());
+        }
+    }
+
+    public void guideLineSystem() {
+        System.out.println(
+                LINE_SEPARATOR + "## 노선 관리 화면" + LINE_SEPARATOR
+                        + "1. 노선 등록" + LINE_SEPARATOR
+                        + "2. 노선 삭제" + LINE_SEPARATOR
+                        + "3. 노선 조회" + LINE_SEPARATOR
+                        + "B. 돌아가기" + LINE_SEPARATOR
+        );
+    }
+
+    public void registerLine() {
+        System.out.println(LINE_SEPARATOR + "## 등록할 노선 이름을 입력하세요.");
+    }
+
+    public void registerLineUpStation() {
+        System.out.println(LINE_SEPARATOR + "## 등록할 노선의 상행 종점역 이름을 입력하세요.");
+    }
+
+    public void registerLineDownStation() {
+        System.out.println(LINE_SEPARATOR + "## 등록할 노선의 하행 종점역 이름을 입력하세요.");
+    }
+
+    public void successRegisterLine() {
+        System.out.println(LINE_SEPARATOR + "노선이 등록되었습니다.");
     }
 }

@@ -8,12 +8,10 @@ import subway.view.OutputView;
 
 public class StationController {
 
-    private final InputView inputView;
     private final OutputView outputView;
     private final InputController inputController;
 
     public StationController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
         this.outputView = outputView;
         this.inputController = new InputController(inputView, outputView);
     }
@@ -29,6 +27,9 @@ public class StationController {
         }
         if(command.equals("2")) {
             deleteStation();
+        }
+        if(command.equals("3")) {
+            showStations();
         }
     }
 
@@ -58,10 +59,19 @@ public class StationController {
         outputView.deleteStation();
         while(true) {
             Station station = inputController.getStation();
-            if(!LineStationRepository.hasLineStation(station)) {
+            if(!StationRepository.hasDuplicatedStation(station)) {
+                outputView.printError("\n등록되지 않은 역입니다.");
+            }
+            if(LineStationRepository.hasLineStation(station)) {
+                outputView.printError("\n노선에 등록되어 있는 역입니다.");
+            }
+            if(!LineStationRepository.hasLineStation(station) && StationRepository.hasDuplicatedStation(station)) {
                 return station;
             }
-            outputView.printError("\n노선에 등록되어 있는 역입니다.");
         }
+    }
+
+    private void showStations() {
+        outputView.showStations(StationRepository.stations());
     }
 }

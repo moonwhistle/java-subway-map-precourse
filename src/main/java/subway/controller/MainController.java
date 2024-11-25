@@ -12,27 +12,35 @@ public class MainController {
     private final OutputView outputView;
     private final InputController inputController;
     private final StationController stationController;
+    private final LineController lineController;
 
     public MainController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.inputController = new InputController(inputView, outputView);
         this.stationController = new StationController(inputView, outputView);
+        this.lineController = new LineController(inputView, outputView);
     }
 
     public void run() {
         initSetting();
-
-        while(true) {
+        boolean runByCommand = true;
+        while(runByCommand) {
             outputView.guideMainSystem();
-            runByCommand(inputController.getCommand());
+            runByCommand = runByCommand(inputController.getCommand());
         }
     }
 
-    private void runByCommand(String command) {
+    private boolean runByCommand(String command) {
         if(command.equals("1")) {
             stationController.run();
+            return true;
         }
+        if(command.equals("2")) {
+            lineController.run();
+            return true;
+        }
+        return false;
     }
 
     private void initSetting() {
