@@ -29,6 +29,36 @@ public class SectionController {
         if(command.equals("1")){
             registerSection();
         }
+        if(command.equals("2")){
+            deleteSection();
+        }
+    }
+
+    private void deleteSection() {
+        Line line = getDeleteSectionLine();
+        LineStation lineStation = LineStationRepository.getLineStation(line);
+        if(lineStation.getStations().size() > 2) {
+            Station station = getDeleteSectionStation(lineStation);
+            lineStation.removeStation(station);
+            outputView.successDeleteSection();
+        }
+        outputView.printError("구간의 길이가 2 이하입니다.");
+    }
+
+    private Line getDeleteSectionLine() {
+        outputView.deleteSectionLine();
+        return getSectionLine();
+    }
+
+    private Station getDeleteSectionStation(LineStation lineStation) {
+        outputView.deleteSectionStation();
+        while(true) {
+            Station station = inputController.getStation();
+            if(lineStation.getStations().contains(station)) {
+                return station;
+            }
+            outputView.printError("역 존재 X");
+        }
     }
 
     private void registerSection() {
@@ -37,10 +67,15 @@ public class SectionController {
         Station station = getRegisterSectionStation(lineStation);
         int order = getRegisterSectionOrder(lineStation.getStations());
         lineStation.addStation(station, order);
+        outputView.successRegisterSection();
     }
 
     private Line getRegisterSectionLine() {
         outputView.registerSectionLine();
+        return getSectionLine();
+    }
+
+    private Line getSectionLine() {
         while(true) {
             Line line = inputController.getLine();
             if(LineRepository.hasDuplicatedLine(line)) {

@@ -54,7 +54,7 @@ public class OutputView {
     }
 
     public void showStations(List<Station> stations) {
-        for(Station station : stations) {
+        for (Station station : stations) {
             System.out.println(station.getName());
         }
     }
@@ -95,7 +95,7 @@ public class OutputView {
 
     public void showLines(List<Line> lines) {
         System.out.println("## 노선 목록");
-        for(Line line : lines) {
+        for (Line line : lines) {
             System.out.println(line.getName());
         }
     }
@@ -110,18 +110,30 @@ public class OutputView {
     }
 
     public void registerSectionLine() {
-        System.out.println("## 노선을 입력하세요.");
+        System.out.println(LINE_SEPARATOR + "## 노선을 입력하세요.");
     }
 
     public void registerSectionStation() {
-        System.out.println("## 역이름을 입력하세요.");
+        System.out.println(LINE_SEPARATOR + "## 역이름을 입력하세요.");
     }
 
     public void registerSectionOrder() {
-        System.out.println("## 순서를 입력하세요.");
+        System.out.println(LINE_SEPARATOR + "## 순서를 입력하세요.");
     }
 
     public void successRegisterSection() {
-        System.out.println("구간이 등록되었습니다.");
+        System.out.println(LINE_SEPARATOR + "구간이 등록되었습니다.");
+    }
+
+    public void deleteSectionLine() {
+        System.out.println(LINE_SEPARATOR + "## 삭제할 구간의 노선을 입력하세요.");
+    }
+
+    public void deleteSectionStation() {
+        System.out.println(LINE_SEPARATOR + "## 삭제할 구간의 역을 입력하세요.");
+    }
+
+    public void successDeleteSection() {
+        System.out.println(LINE_SEPARATOR + "구간이 삭제되었습니다.");
     }
 }
