@@ -9,4 +9,12 @@ public class InputView {
     public InputView(Scanner scanner) {
         this.scanner = scanner;
     }
+
+    public String getCommand() {
+        return scanner.nextLine();
+    }
+
+    public String getStationName() {
+        return scanner.nextLine();
+    }
 }

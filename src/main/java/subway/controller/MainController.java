@@ -10,16 +10,29 @@ public class MainController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final InputController inputController;
+    private final StationController stationController;
 
     public MainController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.inputController = new InputController(inputView, outputView);
+        this.stationController = new StationController(inputView, outputView);
     }
 
     public void run() {
         initSetting();
 
+        while(true) {
+            outputView.guideMainSystem();
+            runByCommand(inputController.getCommand());
+        }
+    }
 
+    private void runByCommand(String command) {
+        if(command.equals("1")) {
+            stationController.run();
+        }
     }
 
     private void initSetting() {
