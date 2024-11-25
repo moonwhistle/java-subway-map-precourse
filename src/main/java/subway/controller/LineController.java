@@ -12,12 +12,10 @@ import subway.view.OutputView;
 
 public class LineController {
 
-    private final InputView inputView;
     private final OutputView outputView;
     private final InputController inputController;
 
     public LineController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
         this.outputView = outputView;
         this.inputController = new InputController(inputView, outputView);
     }
@@ -31,10 +29,32 @@ public class LineController {
         if (command.equals("1")) {
             registerLineStation();
         }
+        if (command.equals("2")) {
+            deleteLineStation();
+        }
+    }
+
+    private void deleteLineStation() {
+        Line line = getDeleteLine();
+        if(LineRepository.deleteLineByName(line.getName())) {
+            LineStationRepository.deleteLineStation(line);
+            outputView.successDeleteLine();
+        }
+    }
+
+    private Line getDeleteLine() {
+        outputView.deleteLine();
+        while (true) {
+            Line line = inputController.getLine();
+            if (LineRepository.hasDuplicatedLine(line)) {
+                return line;
+            }
+            outputView.printError("등록된 노선이 없습니다.");
+        }
     }
 
     private void registerLineStation() {
-        Line line = getLine();
+        Line line = getRegisterLine();
         List<Station> stations = List.of(
                 getUpStation(),
                 getDownStation()
@@ -44,7 +64,7 @@ public class LineController {
         outputView.successRegisterLine();
     }
 
-    private Line getLine() {
+    private Line getRegisterLine() {
         outputView.registerLine();
         while (true) {
             Line line = inputController.getLine();

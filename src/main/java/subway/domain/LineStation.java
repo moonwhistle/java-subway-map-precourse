@@ -18,4 +18,8 @@ public class LineStation {
     public List<Station> getStations() {
         return Collections.unmodifiableList(stations);
     }
+
+    public Line getLine() {
+        return line;
+    }
 }

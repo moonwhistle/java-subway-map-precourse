@@ -83,4 +83,12 @@ public class OutputView {
     public void successRegisterLine() {
         System.out.println(LINE_SEPARATOR + "노선이 등록되었습니다.");
     }
+
+    public void deleteLine() {
+        System.out.println(LINE_SEPARATOR + "삭제할 노선 이름을 입력하세요.");
+    }
+
+    public void successDeleteLine() {
+        System.out.println(LINE_SEPARATOR + "지하철 노선이 삭제되었습니다.");
+    }
 }

@@ -3,6 +3,7 @@ package subway.repository;
 import java.util.ArrayList;
 import java.util.List;
 import subway.domain.LineStation;
+import subway.domain.vo.Line;
 import subway.domain.vo.Station;
 
 public class LineStationRepository {
@@ -20,5 +21,9 @@ public class LineStationRepository {
             }
         }
         return false;
+    }
+
+    public static void deleteLineStation(Line line) {
+        lineStations.removeIf(lineStation -> lineStation.getLine() == line);
     }
 }
