@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import subway.domain.vo.Line;
 import subway.domain.vo.Station;
 
 public class OutputView {
@@ -90,5 +91,12 @@ public class OutputView {
 
     public void successDeleteLine() {
         System.out.println(LINE_SEPARATOR + "지하철 노선이 삭제되었습니다.");
+    }
+
+    public void showLines(List<Line> lines) {
+        System.out.println("## 노선 목록");
+        for(Line line : lines) {
+            System.out.println(line.getName());
+        }
     }
 }

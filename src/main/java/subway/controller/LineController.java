@@ -32,6 +32,14 @@ public class LineController {
         if (command.equals("2")) {
             deleteLineStation();
         }
+        if(command.equals("3")) {
+            showLines();
+        }
+    }
+
+    private void showLines() {
+        List<Line> lines = LineRepository.lines();
+        outputView.showLines(lines);
     }
 
     private void deleteLineStation() {
@@ -59,6 +67,7 @@ public class LineController {
                 getUpStation(),
                 getDownStation()
         );
+        LineRepository.addLine(line);
         LineStation lineStation = new LineStation(line, stations);
         LineStationRepository.addLineStation(lineStation);
         outputView.successRegisterLine();
