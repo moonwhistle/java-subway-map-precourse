@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import subway.domain.LineStation;
 import subway.domain.vo.Line;
 import subway.domain.vo.Station;
 
@@ -135,5 +136,18 @@ public class OutputView {
 
     public void successDeleteSection() {
         System.out.println(LINE_SEPARATOR + "구간이 삭제되었습니다.");
+    }
+
+    public void showLineStations(LineStation lineStations) {
+        System.out.println(
+                LINE_SEPARATOR +
+                "## 지하철 노선도" + LINE_SEPARATOR
+                + lineStations.getLine().getName() + LINE_SEPARATOR
+                + "---" + LINE_SEPARATOR
+        );
+
+        for(Station station : lineStations.getStations()) {
+            System.out.println(station.getName());
+        }
     }
 }

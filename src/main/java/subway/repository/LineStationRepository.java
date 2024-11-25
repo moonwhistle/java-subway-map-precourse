@@ -1,6 +1,7 @@
 package subway.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import subway.domain.LineStation;
 import subway.domain.vo.Line;
@@ -34,5 +35,9 @@ public class LineStationRepository {
             }
         }
         return null;
+    }
+
+    public static List<LineStation> getLineStations() {
+        return Collections.unmodifiableList(lineStations);
     }
 }

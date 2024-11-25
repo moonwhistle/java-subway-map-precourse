@@ -1,8 +1,10 @@
 package subway.controller;
 
+import subway.domain.LineStation;
 import subway.domain.setting.LineInitializer;
 import subway.domain.setting.LineStationInitializer;
 import subway.domain.setting.StationInitializer;
+import subway.repository.LineStationRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -44,7 +46,17 @@ public class MainController {
             sectionController.run();
             return true;
         }
+        if(command.equals("4")) {
+            showLineStations();
+            return true;
+        }
         return false;
+    }
+
+    private void showLineStations() {
+        for(LineStation lineStation : LineStationRepository.getLineStations()){
+            outputView.showLineStations(lineStation);
+        }
     }
 
     private void initSetting() {
