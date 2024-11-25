@@ -21,7 +21,7 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    public static boolean hasDuplicatedStation(String name) {
-        return stations.stream().anyMatch(station -> station.getName().equals(name));
+    public static boolean hasDuplicatedStation(Station station) {
+        return stations.contains(station);
     }
 }

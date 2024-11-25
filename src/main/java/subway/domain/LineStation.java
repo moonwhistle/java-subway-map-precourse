@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.Collections;
 import java.util.List;
 import subway.domain.vo.Line;
 import subway.domain.vo.Station;
@@ -12,5 +13,9 @@ public class LineStation {
     public LineStation(Line line, List<Station> stations) {
         this.line = line;
         this.stations = stations;
+    }
+
+    public List<Station> getStations() {
+        return Collections.unmodifiableList(stations);
     }
 }

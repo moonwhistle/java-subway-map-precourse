@@ -40,4 +40,12 @@ public class OutputView {
     public void successRegisterStation() {
         System.out.println(LINE_SEPARATOR + "지하철 역이 등록되었습니다.");
     }
+
+    public void deleteStation() {
+        System.out.println(LINE_SEPARATOR + "## 삭제할 역 이름을 입력하세요.");
+    }
+
+    public void successDeleteStation() {
+        System.out.println(LINE_SEPARATOR + "지하철 역이 삭제되었습니다.");
+    }
 }
