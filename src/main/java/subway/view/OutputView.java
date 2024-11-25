@@ -70,4 +70,17 @@ public class OutputView {
             );
         }
     }
+
+    public void sectionGide() {
+        System.out.println(
+                "\n## 구간 관리 화면" + LINE_SEPARATOR
+                        + "1. 구간 등록" + LINE_SEPARATOR
+                        + "2. 구간 삭제" + LINE_SEPARATOR
+                        + "B. 돌아가기" + LINE_SEPARATOR
+        );
+    }
+
+    public void showError() {
+
+    }
 }

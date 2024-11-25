@@ -42,10 +42,21 @@ public class LineController {
     }
 
     private void registerLine() {
-        Line line = new Line(inputView.registerLine());
-        LineRepository.addLine(line);
+        Line line = getLine();
         makeLineStation(line);
         outputView.successLineRegister();
+    }
+
+    private Line getLine() {
+        while(true) {
+            try{
+                Line line = new Line(inputView.registerLine());
+                LineRepository.addLine(line);
+                return line;
+            } catch (IllegalArgumentException e) {
+
+            }
+        }
     }
 
     private void makeLineStation(Line line) {

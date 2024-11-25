@@ -12,12 +12,14 @@ public class MainController {
     private final OutputView outputView;
     private final StationController stationController;
     private final LineController lineController;
+    private final SectionController sectionController;
 
     public MainController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.stationController = new StationController(inputView, outputView);
         this.lineController = new LineController(inputView, outputView);
+        this.sectionController = new SectionController(inputView, outputView);
     }
 
 
